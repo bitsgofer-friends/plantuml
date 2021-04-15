@@ -34,6 +34,13 @@ image: image/vendor/plantuml.jar image/Dockerfile
 	$(DOCKER) tag ${versioned_full_img} ${latest_short_img}
 .PHONY: image
 
+push:
+	$(DOCKER) push ${versioned_full_img}
+	$(DOCKER) push ${latest_full_img}
+	$(DOCKER) push ${versioned_short_img}
+	$(DOCKER) push ${latest_short_img}
+.PHONY: push
+
 test: cmd := docker run --rm -i ${versioned_short_img} < tests/example.uml
 test:
 	@echo "Check render command works:"
