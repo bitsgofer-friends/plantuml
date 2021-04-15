@@ -15,14 +15,36 @@ Tags follow [PlantUML's releases](https://github.com/plantuml/plantuml/releases)
 Usage
 -----
 
-```bash
+### Generate SVG from .uml files
+
+```shell
 # generate SVG image
-docker run --rm -i exklamationmark/plantuml:latest < example.uml \
+$> docker run --rm -i exklamationmark/plantuml:latest < example.uml \
 	> diagram.svg
 
 # generate PNG image
-cat example.uml | docker run --rm -i exklamationmark/plantuml:latest -tpng \
+$> cat example.uml | docker run --rm -i exklamationmark/plantuml:latest -tpng \
 	> diagram.png
+```
+
+### Run PlantUML server in Kubernetes
+
+```shell
+# have a values.yaml file
+$> cat values.yaml
+plantuml:
+  ingress:
+    host: plantuml.qa1.kube.demonware.net
+    annotations:
+      kubernetes.io/ingress.class: nginx-bonzai-system
+
+# generate Kubernetes template
+$> helm template plantuml-server ./charts/plantuml-server/ \
+	--namespace=your-namespace \
+	--values=values.yaml
+# YAML manifests ...
+
+# You can then apply these onto a Kubernetes cluster
 ```
 
 Develop
