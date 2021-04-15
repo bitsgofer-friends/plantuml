@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "plantuml.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+{{ include "plantuml.labels" . | indent 4 }}
+spec:
+  type: {{ .Values.plantuml.service.type }}
+  ports:
+    - name: server
+      port: {{ .Values.plantuml.service.port }}
+      targetPort: server
+  selector:
+    app.kubernetes.io/name: {{ include "plantuml.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

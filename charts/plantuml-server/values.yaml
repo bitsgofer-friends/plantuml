@@ -1,0 +1,13 @@
+image:
+  repository: plantuml/plantuml-server
+  tag: jetty-v1.2021.4
+
+plantuml:
+  replicaCount: 1
+  serviceAccount:
+    create: false
+  service:
+    type: ClusterIP
+    port: 80
+  ingress:
+    host: plantuml.k8s.local
