@@ -8,11 +8,17 @@ metadata:
   annotations:
 {{ toYaml .Values.plantuml.ingress.annotations | indent 4 }}
 spec:
- rules:
- - host: {{ .Values.plantuml.ingress.host }}
-   http:
-     paths:
-     - path: /
-       backend:
-         serviceName: {{ include "plantuml.fullname" . }}
-         servicePort: 80
+  {{- if .Values.plantuml.ingress.useTLS }}
+  tls:
+  - hosts:
+    - {{ .Values.plantuml.ingress.host }}
+    secretName: {{ include "plantuml.fullname" . }}-tls
+  {{- end }}
+  rules:
+  - host: {{ .Values.plantuml.ingress.host }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ include "plantuml.fullname" . }}
+          servicePort: 80

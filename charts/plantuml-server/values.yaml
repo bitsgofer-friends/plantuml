@@ -11,3 +11,13 @@ plantuml:
     port: 80
   ingress:
     host: plantuml.k8s.local
+    # annotations:
+    useTLS: false
+
+# resources:
+#   requests:
+#     cpu:
+#     memory:
+#   limits:
+#     cpu:
+#     memory:
