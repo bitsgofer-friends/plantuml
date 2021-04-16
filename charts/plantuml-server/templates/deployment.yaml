@@ -8,7 +8,9 @@ metadata:
 spec:
   replicas: {{ .Values.plantuml.replicaCount }}
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "plantuml.name" . }}
@@ -35,7 +37,7 @@ spec:
           httpGet:
             path: /
             port: 8080
-          initialDelaySeconds: 60
+          initialDelaySeconds: 10
           periodSeconds: 10
           timeoutSeconds: 1
           failureThreshold: 3
@@ -48,4 +50,4 @@ spec:
           successThreshold: 3
           failureThreshold: 3
         resources:
-          {{- toYaml .Values.resources | nindent 12 }}
+          {{- toYaml .Values.resources | nindent 10 }}
