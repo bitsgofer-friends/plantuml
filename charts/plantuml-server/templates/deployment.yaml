@@ -8,7 +8,9 @@ metadata:
 spec:
   replicas: {{ .Values.plantuml.replicaCount }}
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "plantuml.name" . }}
