@@ -5,7 +5,7 @@ This repo package tools for making diagrams with [PlantUML](https://plantuml.com
 
 We aim to release these thing(s):
 
-- Images, e.g: `exklamationmark/plantuml:latest` that package PlantUML into
+- Images, e.g: `bitsgofer/plantuml:latest` that package PlantUML into
   a container => run anywhere.
 - A helm chart for running [PlantUML-server](https://github.com/plantuml/plantuml-server)
   on Kubernetes, so you don't need to paste sensitive diagrams on the Internet.
@@ -19,11 +19,11 @@ Usage
 
 ```shell
 # generate SVG image
-$> docker run --rm -i exklamationmark/plantuml:latest < example.uml \
+$> docker run --rm -i bitsgofer/plantuml:latest < example.uml \
 	> diagram.svg
 
 # generate PNG image
-$> cat example.uml | docker run --rm -i exklamationmark/plantuml:latest -tpng \
+$> cat example.uml | docker run --rm -i bitsgofer/plantuml:latest -tpng \
 	> diagram.png
 ```
 

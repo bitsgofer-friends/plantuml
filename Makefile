@@ -4,7 +4,7 @@ CURL ?= curl
 VERSION := 1.2021.8
 
 image_registry      := registry.hub.docker.com
-image_name          := exklamationmark/plantuml
+image_name          := bitsgofer/plantuml
 image_tag           := ${VERSION}
 versioned_full_img  := ${image_registry}/${image_name}:${image_tag}
 latest_full_img     := ${image_registry}/${image_name}:latest
