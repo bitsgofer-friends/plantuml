@@ -1,7 +1,7 @@
 DOCKER ?= docker
 CURL ?= curl
 
-VERSION := 1.2021.4
+VERSION := 1.2021.8
 
 image_registry      := registry.hub.docker.com
 image_name          := exklamationmark/plantuml
