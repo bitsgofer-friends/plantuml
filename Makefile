@@ -1,7 +1,7 @@
 DOCKER ?= docker
 CURL ?= curl
 
-VERSION := 1.2021.8
+VERSION := 1.2022.3
 
 image_registry      := registry.hub.docker.com
 image_name          := bitsgofer/plantuml
